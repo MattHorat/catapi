@@ -3,7 +3,7 @@ An API to return the top cat breeds!
 
 # Instructions to run
 This assumes that you have a (semi-)recent version of node (12+) and npm
-1. Change and desired configuration in .env file (mainly local port)
+1. Change any desired configuration in .env file (mainly local port)
 2. Install dependencies
 ```shell
 npm install

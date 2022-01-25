@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha test/**/*.test.js",
-    "lint": "./node_modules/.bin/eslint **/*.js",
+    "lint": "./node_modules/.bin/eslint \"**/*.js\"",
     "start": "node src"
   },
   "keywords": [],

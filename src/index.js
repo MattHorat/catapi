@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const breedRouter = require('./api/breedRouter');
+const config = require('./config/config');
 
 const app = express();
 
@@ -10,6 +11,6 @@ app.use(cors());
 
 app.use('/breeds', breedRouter);
 
-app.listen(3001, () => {
-  console.log('listening on port 3001');
+app.listen(config.localPort, () => {
+  console.log(`listening on port ${config.localPort}`);
 });

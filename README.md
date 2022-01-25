@@ -23,3 +23,4 @@ To test the application you can run:
 npm run lint
 npm run test
 ```
+These tests also run automatically on GitHub (see https://github.com/MattHorat/catapi/actions)!

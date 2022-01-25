@@ -23,5 +23,5 @@ async function getTopBreeds(req, res) {
 
 module.exports = {
   getTopBreeds,
-  orderBreeds
+  orderBreeds,
 };

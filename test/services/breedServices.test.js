@@ -1,42 +1,42 @@
+/* eslint-disable no-unused-expressions */
 const assert = require('assert');
 const sinon = require('sinon');
 const { expect } = require('chai');
 const breedService = require('../../src/services/breedService');
 const breedDataAccess = require('../../src/models/breedDataAccess');
-const { stub } = require('sinon');
 
-describe('breedService', function () {
-  describe('orderBreeds', function () {
-    it('should return a list ordered by the combined total', function () {
+describe('breedService', () => {
+  describe('orderBreeds', () => {
+    it('should return a list ordered by the combined total', () => {
       const unorderedBreedList = [
         {
           name: 'cat 1',
           child_friendly: 4,
           dog_friendly: 3,
           stranger_friendly: 2,
-          expected_total: 9
+          expected_total: 9,
         },
         {
           name: 'cat 2',
           child_friendly: 2,
           dog_friendly: 3,
           stranger_friendly: 2,
-          expected_total: 7
+          expected_total: 7,
         },
         {
           name: 'cat 3',
           child_friendly: 5,
           dog_friendly: 3,
           stranger_friendly: 4,
-          expected_total: 12
+          expected_total: 12,
         },
         {
           name: 'cat 4',
           child_friendly: 3,
           dog_friendly: 3,
           stranger_friendly: 2,
-          expected_total: 8
-        }
+          expected_total: 8,
+        },
       ];
 
       breedService.orderBreeds(unorderedBreedList);
@@ -48,22 +48,22 @@ describe('breedService', function () {
       assert.equal(unorderedBreedList[3].name, 'cat 2');
     });
 
-    it('should not change order of tied results', function () {
+    it('should not change order of tied results', () => {
       const unorderedBreedList = [
         {
           name: 'cat 1',
           child_friendly: 2,
           dog_friendly: 3,
           stranger_friendly: 2,
-          expected_total: 7
+          expected_total: 7,
         },
         {
           name: 'cat 2',
           child_friendly: 2,
           dog_friendly: 3,
           stranger_friendly: 2,
-          expected_total: 7
-        }
+          expected_total: 7,
+        },
       ];
 
       breedService.orderBreeds(unorderedBreedList);
@@ -74,51 +74,51 @@ describe('breedService', function () {
     });
   });
 
-  describe('getTopBreeds', function () {
-    it('should return a truncated list of top five results', async function () {
+  describe('getTopBreeds', () => {
+    it('should return a truncated list of top five results', async () => {
       const unorderedBreedList = [
         {
           name: 'cat 1',
           child_friendly: 4,
           dog_friendly: 3,
           stranger_friendly: 2,
-          expected_total: 9
+          expected_total: 9,
         },
         {
           name: 'cat 2',
           child_friendly: 2,
           dog_friendly: 3,
           stranger_friendly: 2,
-          expected_total: 7
+          expected_total: 7,
         },
         {
           name: 'cat 3',
           child_friendly: 5,
           dog_friendly: 3,
           stranger_friendly: 4,
-          expected_total: 12
+          expected_total: 12,
         },
         {
           name: 'cat 4',
           child_friendly: 3,
           dog_friendly: 3,
           stranger_friendly: 2,
-          expected_total: 8
+          expected_total: 8,
         },
         {
           name: 'cat 5',
           child_friendly: 1,
           dog_friendly: 1,
           stranger_friendly: 1,
-          expected_total: 3
+          expected_total: 3,
         },
         {
           name: 'cat 6',
           child_friendly: 5,
           dog_friendly: 3,
           stranger_friendly: 2,
-          expected_total: 10
-        }
+          expected_total: 10,
+        },
       ];
 
       const orderedBreedList = [
@@ -127,39 +127,39 @@ describe('breedService', function () {
           child_friendly: 5,
           dog_friendly: 3,
           stranger_friendly: 4,
-          expected_total: 12
+          expected_total: 12,
         },
         {
           name: 'cat 6',
           child_friendly: 5,
           dog_friendly: 3,
           stranger_friendly: 2,
-          expected_total: 10
+          expected_total: 10,
         },
         {
           name: 'cat 1',
           child_friendly: 4,
           dog_friendly: 3,
           stranger_friendly: 2,
-          expected_total: 9
+          expected_total: 9,
         },
         {
           name: 'cat 4',
           child_friendly: 3,
           dog_friendly: 3,
           stranger_friendly: 2,
-          expected_total: 8
+          expected_total: 8,
         },
         {
           name: 'cat 2',
           child_friendly: 2,
           dog_friendly: 3,
           stranger_friendly: 2,
-          expected_total: 7
-        }
+          expected_total: 7,
+        },
       ];
 
-      stub(breedDataAccess, "getBreeds").returns(unorderedBreedList);
+      sinon.stub(breedDataAccess, 'getBreeds').returns(unorderedBreedList);
       const res = {
         send: sinon.spy(),
         status: sinon.spy(),
